@@ -162,7 +162,7 @@ function handleLogin(e) {
     const password = document.getElementById('password').value;
     const errorElement = document.getElementById('loginError');
     
-    if (username === 'Mayavishi' && password === '123456') {
+    if (username === 'Mayavishi' && password === 'opn4jvMotgIZQmp') {
         isAuthenticated = true;
         currentUser = username;
         hideElement('loginError');
