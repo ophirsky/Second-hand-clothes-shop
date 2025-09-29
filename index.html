@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>החנות שלי</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login View -->
+    <div id="loginView" class="view">
+        <div class="container">
+            <div class="login-container">
+                <div class="card">
+                    <div class="card__body">
+                        <h1>התחברות</h1>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="username" class="form-label">שם משתמש</label>
+                                <input type="text" id="username" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="form-label">סיסמה</label>
+                                <input type="password" id="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full-width">התחבר</button>
+                        </form>
+                        <div id="loginError" class="error-message hidden"></div>
+                        <div class="store-link">
+                            <a href="#" onclick="showStoreView()">עבור לתצוגת החנות</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel View -->
+    <div id="adminView" class="view hidden">
+        <div class="container">
+            <header class="admin-header">
+                <div class="flex justify-between items-center">
+                    <h1>פאנל ניהול</h1>
+                    <div class="header-actions">
+                        <button onclick="showStoreView()" class="btn btn--outline">תצוגת חנות</button>
+                        <button onclick="logout()" class="btn btn--primary">התנתק</button>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <button id="addItemBtn" class="btn btn--primary">הוספת פריט חדש</button>
+                <div id="itemFormContainer" class="hidden">
+                    <h2 id="formTitle">הוספת פריט</h2>
+                    <form id="itemForm">
+                        <div class="form-group">
+                            <label for="itemName">שם הפריט</label>
+                            <input type="text" id="itemName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemCategory">קטגוריה</label>
+                            <select id="itemCategory" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemPrice">מחיר (₪)</label>
+                            <input type="number" id="itemPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemDescription">תיאור</label>
+                            <textarea id="itemDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemSize">מידה</label>
+                            <input type="text" id="itemSize" required>
+                        </div>
+                        <div class="form-group">
+                            <label>תמונה</label>
+                            <div id="dropArea">גרור תמונה לכאן או לחץ לבחירה</div>
+                            <input type="file" id="itemImage" accept="image/*" class="hidden">
+                            <img id="imagePreview" src="" alt="תצוגת התמונה" class="hidden">
+                        </div>
+                        <button type="submit" class="btn btn--primary">שמור</button>
+                        <button type="button" onclick="hideItemForm()" class="btn btn--outline">ביטול</button>
+                    </form>
+                </div>
+                <h2>רשימת פריטים</h2>
+                <div id="itemsList"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Store View -->
+    <div id="storeView" class="view hidden">
+        <header class="store-header">
+            <h1>החנות שלי</h1>
+            <button onclick="showLoginView()" class="btn btn--outline">פאנל ניהול</button>
+        </header>
+        <div class="store-controls">
+            <input type="text" id="searchInput" placeholder="חיפוש">
+            <select id="categoryFilter">
+                <option value="">כל הקטגוריות</option>
+            </select>
+        </div>
+        <div id="storeGrid" class="grid"></div>
+        <footer class="store-footer">
+            <h3>ליצירת קשר</h3>
+            <p>ואטסאפ: 050-4851895</p>
+            <p>גבעתיים</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
